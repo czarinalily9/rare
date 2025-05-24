@@ -2,9 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:rare_disease_connect/config/theme.dart';
 import 'package:rare_disease_connect/widgets/feature_card.dart';
 import 'package:rare_disease_connect/widgets/meta_card.dart';
+import '../widgets/chatbot_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _showChatbot(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.85,
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: const ChatbotWidget(isPopup: true),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +49,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showChatbot(context),
+        child: const Icon(Icons.chat),
       ),
     );
   }

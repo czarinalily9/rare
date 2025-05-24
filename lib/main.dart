@@ -4,11 +4,15 @@ import 'package:rare_disease_connect/config/theme.dart';
 import 'package:rare_disease_connect/config/router.dart';
 
 void main() {
-  runApp(const ProviderScope(child: RareDiseaseApp()));
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class RareDiseaseApp extends ConsumerWidget {
-  const RareDiseaseApp({super.key});
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
