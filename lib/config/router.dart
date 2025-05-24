@@ -13,6 +13,7 @@ import 'package:rare_disease_connect/screens/doctors_screen.dart';
 import 'package:rare_disease_connect/screens/medicine_history_screen.dart';
 import 'package:rare_disease_connect/screens/test_results_screen.dart';
 import 'package:rare_disease_connect/screens/medical_notes_screen.dart';
+import 'package:rare_disease_connect/screens/chatbot_screen.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -100,43 +101,7 @@ class ScaffoldWithBottomNav extends StatelessWidget {
             topRight: Radius.circular(20),
           ),
         ),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.smart_toy, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    'AI Health Assistant',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'Chatbot Coming Soon',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: const ChatbotScreen(),
       ),
     );
   }

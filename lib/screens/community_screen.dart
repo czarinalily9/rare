@@ -73,21 +73,21 @@ class CommunityScreen extends StatelessWidget {
                 context,
                 name: 'Anne Curtis',
                 comment: 'Sending you love and strength <3 Thank ü for spreading awareness. HS needs more voices like yours.',
-                avatar: 'AC',
+                avatar: 'AnneCurtis1people',
               ),
               const SizedBox(height: 16),
               _buildComment(
                 context,
                 name: 'Darna',
                 comment: 'you\'re so brave for sharing this. I\'ve been dealing with flare-ups and considering surgery too. Posts like yours help a lot :)',
-                avatar: 'D',
+                avatar: 'Darna2people',
               ),
               const SizedBox(height: 16),
               _buildComment(
                 context,
                 name: 'Dr. Khalid',
                 comment: 'I\'m a dermatologist and I just want to say you\'re incredibly brave for undergoing wide excision. That\'s not an easy path. Keep up with your therapy and follow-ups! You\'re doing all the right things.',
-                avatar: 'DK',
+                avatar: 'khalid3people',
               ),
             ],
           ),
@@ -173,12 +173,19 @@ class CommunityScreen extends StatelessWidget {
     required String comment,
     required String avatar,
   }) {
+    // Determine file extension based on the avatar name
+    String extension = avatar.contains('khalid') ? 'png' : 'jpg';
+    
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
+          radius: 20,
+          backgroundImage: AssetImage('assets/images/$avatar.$extension'),
           backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-          child: Text(avatar),
+          onBackgroundImageError: (exception, stackTrace) {
+            debugPrint('Error loading image: $avatar');
+          },
         ),
         const SizedBox(width: 12),
         Expanded(

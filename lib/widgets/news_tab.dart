@@ -13,7 +13,7 @@ class NewsTab extends StatelessWidget {
           title: 'Breakthrough in Rare Disease Treatment',
           date: 'March 15, 2024',
           summary: 'Scientists have discovered a new treatment approach for rare genetic disorders using gene therapy, showing promising results in clinical trials.',
-          imageUrl: 'assets/images/research.jpg',
+          imageUrl: 'assets/images/image1news.jpg',
         ),
         const SizedBox(height: 16),
         _buildNewsCard(
@@ -21,7 +21,7 @@ class NewsTab extends StatelessWidget {
           title: 'New Support Program Launched',
           date: 'March 10, 2024',
           summary: 'A new nationwide support program has been launched to help families affected by rare diseases, providing resources and financial assistance.',
-          imageUrl: 'assets/images/support.jpg',
+          imageUrl: 'assets/images/image2news.PNG',
         ),
       ],
     );
@@ -41,15 +41,21 @@ class NewsTab extends StatelessWidget {
         children: [
           AspectRatio(
             aspectRatio: 16 / 9,
-            child: Container(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              child: Center(
-                child: Icon(
-                  Icons.newspaper,
-                  size: 48,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  child: Center(
+                    child: Icon(
+                      Icons.newspaper,
+                      size: 48,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           Padding(
